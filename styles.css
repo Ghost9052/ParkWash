@@ -1,0 +1,259 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #0d0d0f;
+  color: #e4e4e7;
+  line-height: 1.7;
+}
+
+/* Header / Navigation */
+header.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 40px;
+  background: rgba(20, 20, 22, 0.65);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+nav a {
+  margin-left: 22px;
+  color: #cfcfd4;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 40px;
+  background: linear-gradient(135deg, #0d0d0f, #18181b);
+}
+
+/* Apple-style hero intro */
+.hero-content {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroIntro 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes heroIntro {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  font-size: 3.3rem;
+  font-weight: 700;
+}
+
+.hero p {
+  margin-top: 12px;
+  font-size: 1.25rem;
+  color: #b1b1b7;
+}
+
+.cta {
+  margin-top: 28px;
+  padding: 13px 32px;
+  background: #ffffff10;
+  border: 1px solid #ffffff30;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: #ffffff20;
+}
+
+/* Sections */
+.section {
+  padding: 120px 40px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+}
+
+.services li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+/* Reviews Carousel - Endless Horizontal Scroll */
+.review-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  white-space: nowrap;
+}
+
+.review-track {
+  display: inline-flex;
+  animation: scroll-left 40s linear infinite;
+}
+
+.review {
+  display: inline-block;
+  margin-right: 4rem;
+  background: #18181b;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #2e2e33;
+  color: #d4d4d8;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  white-space: nowrap;
+}
+
+/* Infinite scroll animation */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Scroll animations */
+.fade-in {
+  animation: fadeIn 1.4s ease forwards;
+  opacity: 0;
+}
+
+.fade-up {
+  animation: fadeUp 1.4s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll reveal base */
+.section, .review-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease-out;
+}
+
+/* Scroll reveal active */
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Footer */
+.footer {
+  padding: 35px;
+  text-align: center;
+  color: #7e7e85;
+  border-top: 1px solid #1f1f22;
+  margin-top: 40px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px;
+    height: 75vh;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 80px 25px;
+  }
+
+  .review {
+    min-width: 85%;
+  }
+
+  nav a {
+    margin-left: 14px;
+    font-size: 0.92rem;
+  }
+}
+/* Fade edges for premium effect */
+.review-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left fade */
+.review-container::before,
+.review-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.review-container::before {
+  left: 0;
+  background: linear-gradient(to right, #0d0d0f 0%, transparent 100%);
+}
+
+.review-container::after {
+  right: 0;
+  background: linear-gradient(to left, #0d0d0f 0%, transparent 100%);
+}
+/* Make review-track always visible immediately */
+.review-track {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+.services {
+  list-style: none;
+  padding-left: 0;
+}
+
+.services li {
+  text-align: center;
+}
